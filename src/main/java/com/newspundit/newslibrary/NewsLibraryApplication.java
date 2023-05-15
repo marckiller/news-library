@@ -9,5 +9,4 @@ public class NewsLibraryApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(NewsLibraryApplication.class, args);
 	}
-
 }
