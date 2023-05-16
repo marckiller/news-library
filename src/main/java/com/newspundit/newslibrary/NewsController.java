@@ -29,4 +29,26 @@ public class NewsController {
     public int ass(@RequestBody List<News> news){
         return newsRepository.save(news);
     }
+
+    @PatchMapping("/news/{id}")
+    public int update(@PathVariable("id") int id, @RequestBody News updatedNews){
+        News news = newsRepository.getById((id));
+        if (news != null){
+            if (updatedNews.getAddress() != null) news.setAddress(updatedNews.getAddress());
+            if (updatedNews.getSite() != null) news.setSite(updatedNews.getSite());
+            if (updatedNews.getAuthor() != null) news.setAuthor(updatedNews.getAuthor());
+            if (updatedNews.getTitle() != null) news.setTitle(updatedNews.getTitle());
+
+            newsRepository.update(news);
+
+            return 1;
+        } else {
+            return -1;
+        }
+    }
+
+    @DeleteMapping("/news/{id}")
+    public int delete(@PathVariable("id") int id){
+        return newsRepository.delete(id);
+    }
 }

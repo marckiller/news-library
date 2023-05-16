@@ -26,4 +26,13 @@ public class NewsRepository {
                 news.getAddress(), news.getSite(), news.getAuthor(), news.getTitle()));
         return 1;
     }
+
+    public int update(News news){
+        return jdbcTemplate.update("UPDATE news SET address=?,site=?,author=?,title=? WHERE id = ?",
+                news.getAddress(), news.getSite(), news.getAuthor(), news.getTitle(), news.getId());
+    }
+
+    public int delete(int id){
+        return jdbcTemplate.update("DELETE FROM news WHERE id = ?", id);
+    }
 }
