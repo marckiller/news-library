@@ -13,9 +13,8 @@ public class NewsRepository {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
-    public List<String> getSites( ) {
-        return jdbcTemplate.query("SELECT DISTINCT site FROM news", BeanPropertyRowMapper.newInstance(String.class));
+    public List<String> getSites() {
+        return jdbcTemplate.queryForList("SELECT DISTINCT site FROM news", String.class);
     }
 }
-
 
