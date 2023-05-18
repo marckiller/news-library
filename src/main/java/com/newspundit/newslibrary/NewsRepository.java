@@ -14,10 +14,13 @@ public class NewsRepository {
     JdbcTemplate jdbcTemplate;
 
     public List<String> getSites() {
+        // MP - wydaje się, że distinct nic tu nie wnosi
         return jdbcTemplate.queryForList("SELECT DISTINCT site FROM news", String.class);
     }
 
     public News getById(int id) {
+        /* MP - ten BeanPropertyRowMapper pewnie możesz stworzyć raz w klasie i może nawet jako static. Nie będziesz wtedy
+        * zużywał zasobów na tworzeniu nowych obiektów za każdym razem */
         return jdbcTemplate.queryForObject("SELECT * FROM news WHERE id = ?", BeanPropertyRowMapper.newInstance(News.class), id);
     }
 
