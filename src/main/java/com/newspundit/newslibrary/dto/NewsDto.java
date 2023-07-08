@@ -1,4 +1,4 @@
-package com.newspundit.newslibrary;
+package com.newspundit.newslibrary.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,13 +8,16 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class News {
+public class NewsDto {
 
-    private int id;
+    private Long id;
+
     private String address;
+
     private String site;
-    private String publishedAt;
+
     private String author;
+
     private String title;
 
 }
