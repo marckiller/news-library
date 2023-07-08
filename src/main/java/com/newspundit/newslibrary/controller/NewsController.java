@@ -23,7 +23,7 @@ public class NewsController {
     }
 
     @GetMapping("/{id}")
-    public NewsDto getUserById(@PathVariable Long id) {
+    public NewsDto getNewsById(@PathVariable Long id) {
         News news = newsService.getNewsById(id);
         return NewsMapper.toDto(news);
     }

@@ -37,5 +37,7 @@ public class NewsMapper {
         news.setSite(newsDto.getSite());
 
         news.setTitle(newsDto.getTitle());
+
+        return news;
     }
 }

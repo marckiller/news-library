@@ -12,8 +12,8 @@ public class NewsService {
     private final NewsRepository newsRepository;
 
     public News getNewsById(Long id) {
-        return newsRepository.findById(id)
-                .orElseThrow(() -> new NewsNotFoundException("User not found with ID: " + id));
+        return newsRepository.getReferenceById(id);
+                //.orElseThrow(() -> new NewsNotFoundException("User not found with ID: " + id));
     }
 
 }
