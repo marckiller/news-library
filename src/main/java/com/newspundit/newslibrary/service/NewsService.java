@@ -4,6 +4,7 @@ import com.newspundit.newslibrary.dto.NewsDto;
 import com.newspundit.newslibrary.mapper.NewsMapper;
 import com.newspundit.newslibrary.repository.NewsRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import com.newspundit.newslibrary.model.News;
 
@@ -26,18 +27,30 @@ public class NewsService {
     }
 
     public News updateNews(Long id, NewsDto newsDto) {
+        //it needs all fields in JSON file (not provided => null in database)
 
         News existingNews = newsRepository.getReferenceById(id);
+        //throw exception if no id
 
-        existingNews.setPublished_at(newsDto.getPublished_at());
-        existingNews.setSite(newsDto.getSite());
-        existingNews.setTitle(newsDto.getTitle());
-        existingNews.setAuthor(newsDto.getAuthor());
-        existingNews.setAddress(newsDto.getAddress());
-        existingNews.setId(newsDto.getId());
+        try {
+            BeanUtils.copyProperties(newsDto, existingNews);
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to update news", e);
+        }
 
         return newsRepository.save(existingNews);
     }
+
+    public News updateNewsNotNull(Long id, NewsDto newsDto) {
+        //it doesn't need all fields in JSON file (not provided => no change)
+
+        //to be implemented
+
+        return 0;
+
+    }
+
+
 
 
 }

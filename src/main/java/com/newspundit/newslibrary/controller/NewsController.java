@@ -41,6 +41,7 @@ public class NewsController {
         return ResponseEntity.status(HttpStatus.OK).body(updatedNews);
     }
 
-
+    //to do:
+    //@PutMapping("/provided_only/{id}")
 
 }
