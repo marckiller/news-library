@@ -19,6 +19,8 @@ public class NewsMapper {
 
         newsDto.setTitle(news.getTitle());
 
+        newsDto.setPublished_at(news.getPublished_at());
+
         return newsDto;
     }
 
@@ -37,6 +39,8 @@ public class NewsMapper {
         news.setSite(newsDto.getSite());
 
         news.setTitle(newsDto.getTitle());
+
+        news.setPublished_at(newsDto.getPublished_at());
 
         return news;
     }

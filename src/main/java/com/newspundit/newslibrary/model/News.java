@@ -24,10 +24,10 @@ public class News {
 
     private String site;
 
-    //private LocalDateTime  publishedAt;
-
     private String author;
 
     private String title;
 
+    @Column(name="published_at", columnDefinition = "datetime")
+    private LocalDateTime  published_at;
 }
