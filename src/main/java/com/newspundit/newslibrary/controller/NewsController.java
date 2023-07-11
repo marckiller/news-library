@@ -26,22 +26,24 @@ public class NewsController {
     public NewsDto getNewsById(@PathVariable Long id) {
         News news = newsService.getNewsById(id);
         return NewsMapper.toDto(news);
-
     }
 
-    @PostMapping("")
+    @PostMapping("/add")
     public ResponseEntity<News> addNews(@RequestBody NewsDto newsDto) {
         News newNews = newsService.addNews(newsDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(newNews);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/full_update/{id}")
     public ResponseEntity<News> updateNews(@PathVariable Long id, @RequestBody NewsDto newsDto) {
         News updatedNews = newsService.updateNews(id, newsDto);
         return ResponseEntity.status(HttpStatus.OK).body(updatedNews);
     }
 
-    //to do:
-    //@PutMapping("/provided_only/{id}")
+    @PutMapping("/partial_update/{id}")
+    public ResponseEntity<News> updateNewsNotNull(@PathVariable Long id, @RequestBody NewsDto newsDto) {
+        News updatedNews = newsService.updateNewsNotNull(id, newsDto);
+        return ResponseEntity.status(HttpStatus.OK).body(updatedNews);
+    }
 
 }

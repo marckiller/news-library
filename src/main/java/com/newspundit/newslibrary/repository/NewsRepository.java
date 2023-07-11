@@ -8,5 +8,4 @@ import org.springframework.stereotype.Repository;
 public interface NewsRepository extends JpaRepository<News, Long> {
 
     //Add custom querry methods if necesary
-
 }

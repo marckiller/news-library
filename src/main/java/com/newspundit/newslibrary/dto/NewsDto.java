@@ -23,5 +23,4 @@ public class NewsDto {
     private String title;
 
     private LocalDateTime published_at;
-
 }
