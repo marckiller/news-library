@@ -29,5 +29,6 @@ public class News {
     private String title;
 
     @Column(name="published_at", columnDefinition = "datetime")
+    // p00h - publishedAt ; notacja camel case jest typowa dla javy
     private LocalDateTime  published_at;
 }
