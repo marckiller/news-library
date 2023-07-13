@@ -19,8 +19,8 @@ public class NewsService {
     private final NewsRepository newsRepository;
 
     public News getNewsById(Long id) {
-        return newsRepository.getReferenceById(id);
-                //.orElseThrow(() -> new NewsNotFoundException("News not found with ID: " + id));
+
+        return newsRepository.findById(id).orElse(null);
     }
 
     public News addNews(NewsDto newsDto) {
@@ -33,8 +33,7 @@ public class NewsService {
     public News updateNews(Long id, NewsDto newsDto) {
         //it needs all fields in JSON file (not provided => null in database)
 
-        News existingNews = newsRepository.getReferenceById(id);
-        //throw exception if no id
+        News existingNews = newsRepository.findById(id).orElse(null);
 
         try {
             BeanUtils.copyProperties(existingNews, newsDto);
@@ -48,7 +47,7 @@ public class NewsService {
     public News updateNewsNotNull(Long id, NewsDto newsDto) {
         //it doesn't need all fields in JSON file (not provided => no change)
 
-        News existingNews = newsRepository.getReferenceById(id);
+        News existingNews = newsRepository.findById(id).orElse(null);
 
         try {
             java.util.Map<String, String> propertyMap = BeanUtils.describe(newsDto);
