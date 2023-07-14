@@ -5,42 +5,22 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 public class Scraper {
+    //date, author and article can be scrapped via given url
     public static void main(String[] args) {
         try {
             String url = "https://wiadomosci.wp.pl/"; // Replace with the URL of the news website
+
             Document document = Jsoup.connect(url).get();
-            //String htmlContent = document.html();
-            //System.out.println(htmlContent);
 
-            System.out.println("teaserTitle--isGlonews");
+            Elements elements = document.select("a.h2PrHTUx");
 
-            Elements headlines_Glonews = document.select("h2.teaserTitle--isGlonews"); // Replace with the appropriate CSS selector for the headlines
-
-            for (Element headline : headlines_Glonews) {
-                System.out.println(headline.text());
+            for (Element element : elements) {
+                String title = element.attr("title");
+                System.out.println("Title: " + title);
+                String href = "https://wiadomosci.wp.pl"+element.attr("href");
+                System.out.println("href: " + href);
             }
 
-            System.out.println("teaserTitle--isSmall");
-
-            Elements headlines_small = document.select("h2.teaserTitle--isSmall"); // Replace with the appropriate CSS selector for the headlines
-
-            for (Element headline : headlines_small) {
-                System.out.println(headline.text());
-            }
-
-            //String htmlContent = document.html();
-            //System.out.println(htmlContent);
-
-            Elements test_elements = document.select("div.h2PrHTUx");
-            System.out.println(test_elements);
-
-            if (test_elements != null) {
-                for (Element test_element : test_elements) {
-                    System.out.println(test_element.text());
-                }
-            } else {
-                System.out.println("Title and URL not found.");
-            }
         } catch (Exception e) {
             e.printStackTrace();
         }
