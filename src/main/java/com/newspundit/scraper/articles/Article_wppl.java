@@ -3,7 +3,6 @@ package com.newspundit.scraper.articles;
 import com.newspundit.scraper.dto.Article;
 import com.newspundit.scraper.tools.UrlScraper;
 import org.jsoup.nodes.Document;
-import org.jsoup.select.Elements;
 
 import java.io.IOException;
 import java.time.LocalDateTime;

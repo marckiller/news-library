@@ -12,8 +12,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import org.jsoup.nodes.Element;
 
 public class Article_onetpl {
